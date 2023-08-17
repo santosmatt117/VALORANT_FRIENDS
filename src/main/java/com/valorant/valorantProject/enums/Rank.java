@@ -26,5 +26,4 @@ public enum Rank {
     IMMORTAL2,
     IMMORTAL3,
     RADIANT;
-
 }
