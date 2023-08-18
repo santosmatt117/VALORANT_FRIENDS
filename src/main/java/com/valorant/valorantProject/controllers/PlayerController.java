@@ -20,7 +20,7 @@ import com.valorant.valorantProject.repositories.PlayerRepository;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 // import org.springframework.web.bind.annotation.RequestMethod;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping; 
 // import org.springframework.web.bind.annotation.PostMapping;
 // import org.springframework.web.bind.annotation.PutMapping;
@@ -36,10 +36,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RestController
 @RequestMapping("/api/v1/players")  // fix later :))
 public class PlayerController {
-    private PlayerRepository playerRepo;
+    private PlayerRepository playerRepository;
 
-    public PlayerController(PlayerRepository playerRepo) {
-        this.playerRepo = playerRepo;
+    @Autowired
+    public PlayerController(PlayerRepository playerRepository) {
+        this.playerRepository = playerRepository;
     }
 
     // controller methods:
@@ -56,7 +57,7 @@ public class PlayerController {
 
     @GetMapping()
     public Iterable<Player> getAllPlayers() {
-        return this.playerRepo.findAll();
+        return this.playerRepository.findAll();
     }
 
     // @GetMapping("/byAgent/{agent}")

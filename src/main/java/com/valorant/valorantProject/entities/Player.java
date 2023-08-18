@@ -1,7 +1,7 @@
 package com.valorant.valorantProject.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 import com.valorant.valorantProject.enums.Gamemode;
 import com.valorant.valorantProject.enums.Rank;
@@ -10,10 +10,10 @@ import com.valorant.valorantProject.enums.Role;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
 @Entity
 @Table(name="PLAYER")
