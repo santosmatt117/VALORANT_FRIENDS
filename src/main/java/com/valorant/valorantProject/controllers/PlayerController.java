@@ -55,7 +55,7 @@ public class PlayerController {
         - role 
     */
 
-    @GetMapping()
+    @GetMapping("/")
     public Iterable<Player> getAllPlayers() {
         return this.playerRepository.findAll();
     }

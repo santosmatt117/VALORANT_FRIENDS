@@ -32,7 +32,7 @@ public class Player {
 
     @Enumerated(EnumType.STRING)
     @Column(name="GAMEMODE")
-    private Gamemode gameMode;
+    private Gamemode gamemode;
 
     @Enumerated(EnumType.STRING)
     @Column(name="ROLE")
@@ -62,12 +62,12 @@ public class Player {
         this.rank = rank;
     }
 
-    public Gamemode getGameMode() {
-        return gameMode;
+    public Gamemode getGamemode() {
+        return gamemode;
     }
 
-    public void setGameMode(Gamemode gameMode) {
-        this.gameMode = gameMode;
+    public void setGameMode(Gamemode gamemode) {
+        this.gamemode = gamemode;
     }
 
     public Role getRole() {
