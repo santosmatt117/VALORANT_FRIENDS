@@ -66,7 +66,7 @@ public class Player {
         return gamemode;
     }
 
-    public void setGameMode(Gamemode gamemode) {
+    public void setGamemode(Gamemode gamemode) {
         this.gamemode = gamemode;
     }
 
