@@ -6,6 +6,7 @@ import jakarta.persistence.Table;
 import com.valorant.valorantProject.enums.Gamemode;
 import com.valorant.valorantProject.enums.Rank;
 import com.valorant.valorantProject.enums.Role;
+import com.valorant.valorantProject.enums.Agent;
 
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -37,6 +38,10 @@ public class Player {
     @Enumerated(EnumType.STRING)
     @Column(name="ROLE")
     private Role role;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name="AGENT")
+    private Agent agent;
 
     public Integer getId() {
         return id;
@@ -76,6 +81,14 @@ public class Player {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public Agent getAgent() {
+        return this.agent;
+    }
+
+    public void setAgent(Agent agent) {
+        this.agent = agent;
     }
 
 }

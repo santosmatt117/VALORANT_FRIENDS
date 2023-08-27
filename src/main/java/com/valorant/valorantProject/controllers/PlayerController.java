@@ -1,24 +1,18 @@
 package com.valorant.valorantProject.controllers;
 
 import java.lang.Iterable;
-// import java.util.ArrayList;
-// import java.util.List;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 // import java.util.Objects;
 // import java.util.Arrays;
-// import java.util.Optional;
-// import java.util.List;
-import java.util.Optional;
 
 import com.valorant.valorantProject.entities.Player;
+import com.valorant.valorantProject.enums.Agent;
 import com.valorant.valorantProject.enums.Gamemode;
 import com.valorant.valorantProject.enums.Rank;
 import com.valorant.valorantProject.enums.Role;
 import com.valorant.valorantProject.repositories.PlayerRepository;
-
-// import com.valorant.valorantProject.enums.Agent;
-// import com.valorant.valorantProject.enums.Gamemode;
-// import com.valorant.valorantProject.enums.Rank;
-// import com.valorant.valorantProject.enums.Role;
 
 
 import org.springframework.web.bind.annotation.RestController;
@@ -56,6 +50,7 @@ public class PlayerController {
      GET METHODS
      Search by: 
         - no filter (all players)
+        - id
         - agents
         - gamemode
         - rank 
@@ -67,25 +62,29 @@ public class PlayerController {
         return this.playerRepository.findAll();
     }
 
-    // @GetMapping("/byAgent/{agent}")
-    // public List<Player> getPlayerByAgent(@PathVariable Agent agent) {
-
-    // }
-
-    // @GetMapping("/byGamemode/{gamemode}")
-    // public List<Player> getPlayerByGameMode(@PathVariable Gamemode gamemode) {
-
-    // }
-
-    // @GetMapping("/byRank/{rank}")
-    // public List<Player> getPlayerByRank(@PathVariable Rank rank) {
-
-    // }
-
-    // @GetMapping("/byRole/{role}")
-    // public List<Player> getPlayerByRole(@PathVariable Role role) {
-
-    // }
+    // search methods // not tested //
+    @GetMapping("/search/{id}")
+    public Optional<Player> getPlayerById(@PathVariable("id") Integer id) {
+        return this.playerRepository.findById(id);
+    }
+    
+    @GetMapping("/search")
+    public List<Player> searchPlayers(@RequestParam(name="agent", required=false) Agent agent,
+                                      @RequestParam(name="rank", required=false) Rank rank,
+                                      @RequestParam(name="gamemode", required=false) Gamemode gamemode, 
+                                      @RequestParam(name="role", required=false) Role role) {
+        if (agent != null) {
+            return this.playerRepository.findByAgent(agent);
+        } else if (rank != null) {
+            return this.playerRepository.findByRank(rank);
+        } else if (gamemode != null) {
+            return this.playerRepository.findByGamemode(gamemode);
+        } else if (role != null) {
+            return this.playerRepository.findByRole(role);
+        } else {
+            return new ArrayList<>();
+        }
+    }
 
 
     // POST - create new player profile
@@ -94,12 +93,6 @@ public class PlayerController {
         return this.playerRepository.save(newPlayer);
     }
 
-
-    // // PUT - update existing player
-    // @PutMapping()
-    // public Player updatePlayer(@RequestBody Player updatedPlayer) {
-    //     return updatedPlayer;
-    // }
 
     // DELETE - delete player profile
     @DeleteMapping("/{id}")
@@ -163,4 +156,41 @@ public class PlayerController {
     }
 
 
+    // Update any attribute // not tested // 
+    @PutMapping("/{id}")
+    public Player updatePlayer(@PathVariable("id") Integer id, @RequestBody Player p) {
+        Optional<Player> playerToUpdateOptional = this.playerRepository.findById(id);
+        if(!playerToUpdateOptional.isPresent()) {
+            return null;
+        }
+
+        Player playerToUpdate = playerToUpdateOptional.get();
+
+        if (p.getAgent() != null) {
+            playerToUpdate.setAgent(p.getAgent());
+        }
+
+        if(p.getGamemode() != null) {
+            playerToUpdate.setGamemode(p.getGamemode());
+        }
+
+        if(p.getId() != null) {
+            playerToUpdate.setId(p.getId());
+        }
+
+        if(p.getPlayerIdentifier() != null) {
+            playerToUpdate.setPlayerIdentifier(p.getPlayerIdentifier());
+        }
+
+        if(p.getRank() != null) {
+            playerToUpdate.setRank(p.getRank());
+        }
+
+        if(p.getRole() != null) {
+            playerToUpdate.setRole(p.getRole());
+        }
+
+        Player updatedPlayer = this.playerRepository.save(playerToUpdate);
+        return updatedPlayer;
+    }
 }
