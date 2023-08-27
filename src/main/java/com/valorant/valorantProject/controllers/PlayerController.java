@@ -61,11 +61,47 @@ public class PlayerController {
                                       @RequestParam(name="gamemode", required=false) Gamemode gamemode, 
                                       @RequestParam(name="role", required=false) Role role) {
         if (agent != null) {
-            return this.playerRepository.findByAgent(agent);
+            if (rank != null) {
+                if (gamemode != null) {
+                    if (role != null) {
+                        return this.playerRepository.findByAgentAndRankAndGamemodeAndRole(agent, rank, gamemode, role);
+                    } else {
+                        return this.playerRepository.findByAgentAndRankAndGamemode(agent, rank, gamemode);
+                    }
+                } else if (role != null) {
+                    return this.playerRepository.findByAgentAndRankAndRole(agent, rank, role);
+                } else {
+                    return this.playerRepository.findByAgentAndRank(agent, rank);
+                }
+            } else if (gamemode != null) {
+                if (role != null) {
+                    return this.playerRepository.findByAgentAndGamemodeAndRole(agent, gamemode, role);
+                } else {
+                    return this.playerRepository.findByAgentAndGamemode(agent, gamemode);
+                }
+            } else if (role != null) {
+                return this.playerRepository.findByAgentAndRole(agent, role);
+            } else {
+                return this.playerRepository.findByAgent(agent);
+            }
         } else if (rank != null) {
-            return this.playerRepository.findByRank(rank);
+            if (gamemode != null) {
+                if (role != null) {
+                    return this.playerRepository.findByRankAndGamemodeAndRole(rank, gamemode, role);
+                } else {
+                    return this.playerRepository.findByRankAndGamemode(rank, gamemode);
+                }
+            } else if (role != null) {
+                return this.playerRepository.findByRankAndRole(rank, role);
+            } else {
+                return this.playerRepository.findByRank(rank);
+            }
         } else if (gamemode != null) {
-            return this.playerRepository.findByGamemode(gamemode);
+            if (role != null) {
+                return this.playerRepository.findByGamemodeAndRole(gamemode, role);
+            } else {
+                return this.playerRepository.findByGamemode(gamemode);
+            }
         } else if (role != null) {
             return this.playerRepository.findByRole(role);
         } else {

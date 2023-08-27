@@ -17,4 +17,16 @@ public interface PlayerRepository extends CrudRepository<Player, Integer> {
     List<Player> findByRank(Rank rank);
     List<Player> findByGamemode(Gamemode gamemode);
     List<Player> findByRole(Role role);
+
+    List<Player> findByAgentAndRank(Agent agent, Rank rank);
+    List<Player> findByAgentAndGamemode(Agent agent, Gamemode gamemode);
+    List<Player> findByAgentAndRole(Agent agent, Role role);
+    List<Player> findByRankAndGamemode(Rank rank, Gamemode gamemode);
+    List<Player> findByRankAndRole(Rank rank, Role role);
+    List<Player> findByGamemodeAndRole(Gamemode gamemode, Role role);
+    List<Player> findByAgentAndRankAndGamemode(Agent agent, Rank rank, Gamemode gamemode);
+    List<Player> findByAgentAndRankAndRole(Agent agent, Rank rank, Role role);
+    List<Player> findByAgentAndGamemodeAndRole(Agent agent, Gamemode gamemode, Role role);
+    List<Player> findByRankAndGamemodeAndRole(Rank rank, Gamemode gamemode, Role role);
+    List<Player> findByAgentAndRankAndGamemodeAndRole(Agent agent, Rank rank, Gamemode gamemode, Role role);
 }
