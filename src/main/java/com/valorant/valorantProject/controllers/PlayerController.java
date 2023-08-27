@@ -44,25 +44,12 @@ public class PlayerController {
         this.playerRepository = playerRepository;
     }
 
-    // controller methods:
-
-    /*
-     GET METHODS
-     Search by: 
-        - no filter (all players)
-        - id
-        - agents
-        - gamemode
-        - rank 
-        - role 
-    */
-
     @GetMapping("/")
     public Iterable<Player> getAllPlayers() {
         return this.playerRepository.findAll();
     }
 
-    // search methods // not tested //
+    // search methods // tested :) //
     @GetMapping("/search/{id}")
     public Optional<Player> getPlayerById(@PathVariable("id") Integer id) {
         return this.playerRepository.findById(id);
@@ -88,7 +75,7 @@ public class PlayerController {
 
 
     // POST - create new player profile
-    @PostMapping("/")
+    @PostMapping("/add")  // changed end point , it was same as search so idk
     public Player addPlayer(@RequestBody Player newPlayer) {
         return this.playerRepository.save(newPlayer);
     }
