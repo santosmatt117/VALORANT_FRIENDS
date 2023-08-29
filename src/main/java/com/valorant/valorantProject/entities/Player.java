@@ -17,30 +17,33 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
 @Entity
-@Table(name="PLAYER")
+@Table(name = "PLAYER")
 public class Player {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    
-    @Column(name="PLAYER_IDENTIFIER", unique=true)
+
+    @Column(name = "PLAYER_IDENTIFIER", unique = true)
     private String playerIdentifier;
 
+    @Column(name = "PASSWORD") // Add the password column
+    private String password;
+
     @Enumerated(EnumType.STRING)
-    @Column(name="RANK")
+    @Column(name = "RANK")
     private Rank rank;
 
     @Enumerated(EnumType.STRING)
-    @Column(name="GAMEMODE")
+    @Column(name = "GAMEMODE")
     private Gamemode gamemode;
 
     @Enumerated(EnumType.STRING)
-    @Column(name="ROLE")
+    @Column(name = "ROLE")
     private Role role;
 
     @Enumerated(EnumType.STRING)
-    @Column(name="AGENT")
+    @Column(name = "AGENT")
     private Agent agent;
 
     public Integer getId() {
@@ -57,6 +60,14 @@ public class Player {
 
     public void setPlayerIdentifier(String playerIdentifier) {
         this.playerIdentifier = playerIdentifier;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Rank getRank() {
@@ -90,6 +101,4 @@ public class Player {
     public void setAgent(Agent agent) {
         this.agent = agent;
     }
-
 }
-

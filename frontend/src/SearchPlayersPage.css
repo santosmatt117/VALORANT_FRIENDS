@@ -1,0 +1,33 @@
+.search-players-container {
+    text-align: left;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f4f4f4;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  .search-players-container h2 {
+    margin-bottom: 15px;
+  }
+  
+  .filters {
+    margin-bottom: 20px;
+  }
+  
+  .filters label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .filters select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Add additional styling for search results here */
+  

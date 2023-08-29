@@ -1,13 +1,14 @@
 import React, { Component, ChangeEvent, FormEvent } from 'react';
-import './CreateProfilePage.css'; // Import your CreateProfilePage specific styles
+import './CreateProfilePage.css';
+import { Agent, Rank, Role, Gamemode } from './enums';
 
 interface CreateProfilePageState {
   username: string;
   password: string;
-  agent: string;
-  role: string;
-  gamemode: string;
-  rank: string;
+  agent: Agent;
+  role: Role;
+  gamemode: Gamemode;
+  rank: Rank;
 }
 
 class CreateProfilePage extends Component<{}, CreateProfilePageState> {
@@ -17,14 +18,14 @@ class CreateProfilePage extends Component<{}, CreateProfilePageState> {
     this.state = {
       username: '',
       password: '',
-      agent: '',
-      role: '',
-      gamemode: '',
-      rank: '',
+      agent: Agent.ASTRA,
+      role: Role.DUELIST,
+      gamemode: Gamemode.COMPETITIVE,
+      rank: Rank.RADIANT,
     };
   }
 
-  handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+  handleInputChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = event.target;
     this.setState({ [name]: value } as Pick<CreateProfilePageState, keyof CreateProfilePageState>);
   };
@@ -32,8 +33,8 @@ class CreateProfilePage extends Component<{}, CreateProfilePageState> {
   handleSubmit = (event: FormEvent) => {
     event.preventDefault();
     const { username, password, agent, role, gamemode, rank } = this.state;
-    // Here you can submit the form data to your backend or perform any other necessary actions
     console.log('Form submitted:', { username, password, agent, role, gamemode, rank });
+    // Here you can submit the form data to your backend or perform any other necessary actions
   };
 
   render() {
@@ -53,19 +54,43 @@ class CreateProfilePage extends Component<{}, CreateProfilePageState> {
           </label>
           <label>
             Agent:
-            <input type="text" name="agent" value={agent} onChange={this.handleInputChange} />
+            <select name="agent" value={agent} onChange={this.handleInputChange}>
+              {Object.values(Agent).map(agentOption => (
+                <option key={agentOption} value={agentOption}>
+                  {agentOption}
+                </option>
+              ))}
+            </select>
           </label>
           <label>
             Role:
-            <input type="text" name="role" value={role} onChange={this.handleInputChange} />
+            <select name="role" value={role} onChange={this.handleInputChange}>
+              {Object.values(Role).map(roleOption => (
+                <option key={roleOption} value={roleOption}>
+                  {roleOption}
+                </option>
+              ))}
+            </select>
           </label>
           <label>
             Gamemode:
-            <input type="text" name="gamemode" value={gamemode} onChange={this.handleInputChange} />
+            <select name="gamemode" value={gamemode} onChange={this.handleInputChange}>
+              {Object.values(Gamemode).map(gamemodeOption => (
+                <option key={gamemodeOption} value={gamemodeOption}>
+                  {gamemodeOption}
+                </option>
+              ))}
+            </select>
           </label>
           <label>
             Rank:
-            <input type="text" name="rank" value={rank} onChange={this.handleInputChange} />
+            <select name="rank" value={rank} onChange={this.handleInputChange}>
+              {Object.values(Rank).map(rankOption => (
+                <option key={rankOption} value={rankOption}>
+                  {rankOption}
+                </option>
+              ))}
+            </select>
           </label>
           <button type="submit">Create Profile</button>
         </form>
