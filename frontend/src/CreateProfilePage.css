@@ -43,4 +43,20 @@
     margin-top: 15px;
     font-size: 14px;
   }
+
+
+/* Style for the select dropdown */
+select {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+}
+
+/* Style for the option items in the dropdown */
+select option {
+  font-size: 16px;
+}
+
   
