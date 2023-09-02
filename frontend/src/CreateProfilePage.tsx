@@ -3,13 +3,12 @@ import './CreateProfilePage.css';
 import { Agent, Rank, Role, Gamemode } from './enums';
 
 interface CreateProfilePageState {
-  username: string;
+  playerIdentifier: string;
   password: string;
   agent: Agent;
   role: Role;
   gamemode: Gamemode;
   rank: Rank;
-  submissionSuccess: boolean;
 }
 
 class CreateProfilePage extends Component<{}, CreateProfilePageState> {
@@ -17,13 +16,12 @@ class CreateProfilePage extends Component<{}, CreateProfilePageState> {
     super(props);
 
     this.state = {
-      username: '',
+      playerIdentifier: '',
       password: '',
       agent: Agent.ASTRA,
       role: Role.DUELIST,
       gamemode: Gamemode.COMPETITIVE,
       rank: Rank.RADIANT,
-      submissionSuccess: false, // Initialize to false
     };
   }
 
@@ -36,11 +34,11 @@ class CreateProfilePage extends Component<{}, CreateProfilePageState> {
 
   handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    const { username, password, agent, role, gamemode, rank } = this.state;
+    const { playerIdentifier, password, agent, role, gamemode, rank } = this.state;
 
     // new player object for POSt 
     const newPlayer = {
-      username,
+      playerIdentifier,
       password,
       agent,
       role,
@@ -49,7 +47,7 @@ class CreateProfilePage extends Component<{}, CreateProfilePageState> {
     };
 
     try {  // Send POST to backend
-      const response = await fetch('/api/v1/players/add', {
+      const response = await fetch('http://localhost:8080/api/v1/players/add', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -61,7 +59,7 @@ class CreateProfilePage extends Component<{}, CreateProfilePageState> {
         console.log('Profile created !! WOO', newPlayer);
         //reset fields
         this.setState({
-          username: '',
+          playerIdentifier: '',
           password: '',
           agent: Agent.ASTRA,
           role: Role.DUELIST,
@@ -77,18 +75,15 @@ class CreateProfilePage extends Component<{}, CreateProfilePageState> {
   };
 
   render() {
-    const { username, password, agent, role, gamemode, rank, submissionSuccess } = this.state;
+    const { playerIdentifier, password, agent, role, gamemode, rank } = this.state;
   
     return (
       <div className="create-profile-container">
         <h2>Create Profile</h2>
-        {submissionSuccess ? (
-          <div className="success-message">Profile created successfully!</div>
-        ) : (
           <form onSubmit={this.handleSubmit}>
             <label>
-              Username:
-              <input type="text" name="username" value={username} onChange={this.handleInputChange} />
+              playerIdentifier:
+              <input type="text" name="playerIdentifier" value={playerIdentifier} onChange={this.handleInputChange} />
             </label>
             <label>
               Password:
@@ -136,7 +131,6 @@ class CreateProfilePage extends Component<{}, CreateProfilePageState> {
             </label>
             <button type="submit">Create Profile</button>
           </form>
-        )}
       </div>
     );
   }
