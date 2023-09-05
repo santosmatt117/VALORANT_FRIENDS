@@ -130,6 +130,18 @@ export class SearchPlayersPage extends Component<{}, SearchPlayersPageState> {
       console.log('Fetch error:', error);
     });
   }
+
+  handleBack = () => {
+    this.setState({
+      page: 'Filters',
+      filters: {
+        rankFilter: '',
+        roleFilter: '',
+        agentFilter: '',
+        gamemodeFilter: ''
+      }
+    });
+  }
   
 
   // render = (): JSX.Element => {
@@ -275,6 +287,8 @@ export class SearchPlayersPage extends Component<{}, SearchPlayersPageState> {
             </li>
           ) : <li>No results found</li>}
         </ul>
+        {/* Back button to return to Search! */}
+        <button onClick={this.handleBack}>Back to Search</button>
       </div>
       );
     }
