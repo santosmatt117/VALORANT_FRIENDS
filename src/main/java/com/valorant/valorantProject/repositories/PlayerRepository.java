@@ -1,6 +1,7 @@
 package com.valorant.valorantProject.repositories;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.valorant.valorantProject.enums.Rank;
 import com.valorant.valorantProject.enums.Gamemode;
@@ -12,7 +13,7 @@ import org.springframework.data.repository.CrudRepository;
 
 
 public interface PlayerRepository extends CrudRepository<Player, Integer> {
-    List<Player> findByPlayerIdentifier(String playerIdentifier);
+    Optional<Player> findByPlayerIdentifier(String playerIdentifier);
     List<Player> findByAgent(Agent agent);
     List<Player> findByRank(Rank rank);
     List<Player> findByGamemode(Gamemode gamemode);
