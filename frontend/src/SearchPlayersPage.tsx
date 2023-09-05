@@ -87,34 +87,6 @@ export class SearchPlayersPage extends Component<{}, SearchPlayersPageState> {
     console.log('Fetching from URL:', fullUrl); // log the URL to verify
   
     fetch(fullUrl, { method: 'GET' }) // Removed the headers field
-    // .then(response => {
-    //   console.log('Received response:', response);
-    //   if (!response.ok) {
-    //     return response.text().then(text => {
-    //       throw new Error(`HTTP error ${response.status}: ${text}`);
-    //     });
-    //   }
-    //   return response.json();  // parse JSON data into a JavaScript object
-    // })
-    // .then(data => {
-    //   // Here, 'data' is the parsed response from the server. You can use it as needed.
-    //   this.setState({ searchResults: data });
-    //   console.log('Received data:', data);
-    // })
-    // .catch(error => {
-    //   // Log the error message to see more details.
-    //   console.log('Fetch error:', error);
-    // });
-    // .then(response => {
-    //   console.log('Received response:', response);
-    //   if (!response.ok) {
-    //     throw new Error('Network response was not ok');
-    //   }
-    //   return response.text(); // temporarily use text instead of json
-    // })
-    // .then(data => {
-    //   console.log('Received data:', data); // print out the raw data
-    // })
     .then(response => {
       console.log('Received response:', response);
       if (!response.ok) {
@@ -142,77 +114,7 @@ export class SearchPlayersPage extends Component<{}, SearchPlayersPageState> {
       }
     });
   }
-  
 
-  // render = (): JSX.Element => {
-  //   const { rankFilter, roleFilter, agentFilter, gamemodeFilter } = this.state.filters;
-  //   const { searchResults } = this.state;
-  //   return (
-  //     <div className="search-players-container">
-  //       <h1>Search Players</h1>
-  //       <div className="filters">
-    
-  //         {/* Agent Filter */}
-  //         <div className="filter-container">
-  //           <label htmlFor="agent">Agent:</label>
-  //           <select id="agent" name= "agentFilter" onChange={this.handleFilterChange}>
-  //             {['ASTRA', 'BREACH', 'BRIMSTONE', 'CHAMBER', 'CYPHER', 'DEADLOCK', 'FADE', 'GEKKO', 'HARBOR', 'JETT', 'KAYO', 'KILLJOY', 'NEON', 'OMEN', 'PHOENIX', 'RAZE', 'REYNA', 'SAGE', 'SKYE', 'SOVA', 'VIPER', 'YORU'].map(agent => 
-  //               <option key={agent} value={agent}>{agent}</option>
-  //             )}
-  //           </select>
-  //         </div>
-    
-  //         {/* Gamemode Filter */}
-  //         <div className="filter-container">
-  //           <label htmlFor="gamemode">Gamemode:</label>
-  //           <select id="gamemode" name="gamemodeFilter" onChange={this.handleFilterChange}>
-  //             {['UNRATED', 'SPIKERUSH', 'DEATHMATCH', 'COMPETITIVE', 'CUSTOM', 'ESCALATION', 'TEAMDEATHMATCH'].map(mode => 
-  //               <option key={mode} value={mode}>{mode}</option>
-  //             )}
-  //           </select>
-  //         </div>
-    
-  //         {/* Rank Filter */}
-  //         <div className="filter-container">
-  //           <label htmlFor="rank">Rank:</label>
-  //           <select id="rank" name="rankFilter" onChange={this.handleFilterChange}>
-  //             {['IRON1', 'IRON2', 'IRON3', 'BRONZE1', 'BRONZE2', 'BRONZE3', 'SILVER1', 'SILVER2', 'SILVER3', 'GOLD1', 'GOLD2', 'GOLD3', 'PLATINUM1', 'PLATINUM2', 'PLATINUM3', 'DIAMOND1', 'DIAMOND2', 'DIAMOND3', 'ASCENDANT1', 'ASCENDANT2', 'ASCENDANT3', 'IMMORTAL1', 'IMMORTAL2', 'IMMORTAL3', 'RADIANT'].map(rank => 
-  //               <option key={rank} value={rank}>{rank}</option>
-  //             )}
-  //           </select>
-  //         </div>
-    
-  //         {/* Role Filter */}
-  //         <div className="filter-container">
-  //           <label htmlFor="role">Role:</label>
-  //           <select id="role" name="roleFilter" onChange={this.handleFilterChange}>
-  //             {['INITIATOR', 'CONTROLLER', 'DUELIST', 'SENTINEL'].map(role => 
-  //               <option key={role} value={role}>{role}</option>
-  //             )}
-  //           </select>
-  //         </div>
-    
-  //         {/* Button to perform the search */}
-  //         <button onClick={this.handleSearch}>Search</button>
-  //       </div>
-  //       {/* Render search results here */}
-  //       <h2>Search Results</h2>
-  //         <ul>
-  //           {this.state.searchResults.map((result, index) => 
-  //             <li key={index}>
-  //               {/* Render your Player object. These should match the fields of your Player entity */}
-  //               Player Identifier: {result.playerIdentifier},
-  //               Rank: {result.rank},
-  //               Gamemode: {result.gamemode},
-  //               Role: {result.role},
-  //               Agent: {result.agent}
-  //           </li>
-  //           )}
-  //         </ul>
-  //     </div>
-  //   );
-    
-  // };
   render = (): JSX.Element => {
     const { rankFilter, roleFilter, agentFilter, gamemodeFilter } = this.state.filters;
     const { searchResults , page} = this.state;
@@ -293,9 +195,6 @@ export class SearchPlayersPage extends Component<{}, SearchPlayersPageState> {
       );
     }
   };
-  
-  
-
 }
 
 export default SearchPlayersPage;

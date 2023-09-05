@@ -66,6 +66,7 @@ class CreateProfilePage extends Component<{}, CreateProfilePageState> {
           gamemode: Gamemode.COMPETITIVE,
           rank: Rank.RADIANT,
         });
+        //this.props.navigateToPage(UserAccount);
       } else {
         console.error('Failed to create profile:', response.statusText);
       }

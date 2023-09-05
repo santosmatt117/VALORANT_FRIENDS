@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-import CreateProfilePage from './CreateProfilePage'; // Import your CreateProfilePage component
-import SearchPlayersPage from './SearchPlayersPage'; // Import your SearchPlayersPage component
+import CreateProfilePage from './CreateProfilePage'; 
+import SearchPlayersPage from './SearchPlayersPage'; 
+import UserAccountPage from './UserAccountPage'; 
 
-type Page = 'Login' | 'CreateProfile' | 'SearchPlayers';
+type Page = 'Login' | 'CreateProfile' | 'SearchPlayers' | 'UserAccount';
 
 interface AppState {
   page: Page;
@@ -22,6 +23,18 @@ class App extends Component<{}, AppState> {
     this.setState({ page });
   };
 
+  // pass this to create account
+  // navigateToUserAccount = () => {
+  //   this.navigateToPage('UserAccount');
+  // };
+
+  handleLoginSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    // login logic 
+    // if login successful
+      this.navigateToPage('UserAccount');
+  };
+
   renderPage = () => {
     const { page } = this.state;
 
@@ -33,7 +46,7 @@ class App extends Component<{}, AppState> {
       return (
         <div className="login-container">
           <h2>Login</h2>
-          <form>
+          <form onSubmit={this.handleLoginSubmit}>
             <label>
               Username:
               <input type="text" />
@@ -47,6 +60,8 @@ class App extends Component<{}, AppState> {
           <p>Don't have an account? <span onClick={() => this.navigateToPage('CreateProfile')}>Create Account</span></p>
         </div>
       );
+    } else if (page === 'UserAccount') {
+      return <UserAccountPage />;
     }
 
     return null;
@@ -63,7 +78,8 @@ class App extends Component<{}, AppState> {
             <button onClick={() => this.navigateToPage('SearchPlayers')}>Search for Players</button>
           </div>
         </header>
-        <div className="page-content">{this.renderPage()}</div>
+        <div className="page-content">
+          {this.renderPage()}</div>
       </div>
     );
   }

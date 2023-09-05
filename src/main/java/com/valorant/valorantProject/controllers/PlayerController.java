@@ -32,8 +32,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 // import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
-// import org.springframework.http.HttpStatus;
-// import org.springframework.web.server.ResponseStatusException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 @CrossOrigin(origins = "http://localhost:3000") 
 @RestController
@@ -44,6 +44,20 @@ public class PlayerController {
     @Autowired
     public PlayerController(PlayerRepository playerRepository) {
         this.playerRepository = playerRepository;
+    }
+
+
+    @GetMapping("/login")
+    public ResponseEntity<Player> authenticateUser(@RequestParam("username") String username, @RequestParam("password") String password) {
+        Optional<Player> foundPlayer = this.playerRepository.findByPlayerIdentifier(username);
+        if (foundPlayer.isEmpty()) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);  // Username not found, status 200
+        } 
+        Player player = foundPlayer.get();
+        if (!player.getPassword().equals(password)) {
+            return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);  // Password mismatch, status 401
+        }
+        return new ResponseEntity<>(player, HttpStatus.OK);  // Successful login, status 200
     }
 
     @GetMapping("/")
@@ -129,7 +143,6 @@ public class PlayerController {
         Player playerToDelete = playerToDeleteOptional.get();
         this.playerRepository.delete(playerToDelete);
         return playerToDelete;
-
     }
 
     @PutMapping("/{id}/changerank")
