@@ -1,62 +1,108 @@
+/* CreateProfilePage.css */
 .create-profile-container {
-    text-align: left;
-    padding: 20px;
-    border: 1px solid #ccc;
-    background-color: #f4f4f4;
-    max-width: 300px;
-    margin: 0 auto;
-  }
-  
-  .create-profile-container h2 {
-    margin-bottom: 15px;
-  }
-  
-  .create-profile-container label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
-  }
-  
-  .create-profile-container input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .create-profile-container button {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  
-  .create-profile-container button:hover {
-    background-color: #0056b3;
-  }
-  
-  .create-profile-container p {
-    margin-top: 15px;
-    font-size: 14px;
-  }
+  background-color: #f8f8f8; /* White background */
+  border-radius: 10px; /* Rounded edges */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
+  padding: 20px;
+  width: 300px;
+  margin: 0 auto;
+  text-align: center;
+}
 
+.create-profile-container h2 {
+  color: #333;
+}
 
-/* Style for the select dropdown */
-select {
-  padding: 8px;
-  font-size: 16px;
+.create-profile-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.create-profile-container label {
+  margin: 10px 0;
+  font-weight: bold;
+  color: #333; /* Text color */
+}
+
+.create-profile-container input[type="text"],
+.create-profile-container input[type="password"] {
+  width: 100%;
+  padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 5px;
+}
+
+.create-profile-container button[type="submit"] {
+  background-color: #007bff; /* Blue button background */
+  color: #fff; /* White text color */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.create-profile-container button[type="submit"]:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.create-profile-container p {
+  margin-top: 10px;
+}
+
+.create-profile-container span {
+  color: #007bff; /* Blue color for the "Create Account" link */
+  cursor: pointer;
+}
+
+.create-profile-container span:hover {
+  text-decoration: underline;
+}
+
+/* Add styles for the custom select dropdowns */
+.select-container {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.select-label {
+  flex: 1;
+  font-weight: bold;
+  color: #333; /* Text color */
+}
+
+.custom-select {
+  flex: 2;
+  position: relative;
+}
+
+.custom-select select {
+  width: 100%;
+  padding: 10px 30px 10px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   background-color: white;
+  cursor: pointer;
 }
 
-/* Style for the option items in the dropdown */
-select option {
-  font-size: 16px;
+.custom-select::after {
+  content: '\25BC'; /* Down arrow character */
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 10px;
+  color: #333; /* Arrow color */
 }
 
-  
+.custom-select select:hover {
+  border-color: #007bff; /* Highlight on hover */
+}
+

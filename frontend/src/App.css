@@ -62,3 +62,19 @@
   text-decoration: underline;
   cursor: pointer;
 }
+
+/* Style for navigation links */
+.options a {
+  text-decoration: none;
+  color: #fff;
+  background-color: #007bff;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.options a:hover {
+  background-color: #0056b3;
+}
