@@ -64,7 +64,7 @@ const UserAccountPage: React.FC = () => {
   useEffect(() => {
     const fetchPlayerData = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/api/v1/users/${userId}`);
+        const response = await fetch(`http://localhost:8080/api/v1/players/search/${userId}`);
         if (response.ok) {
           const playerData: Player = await response.json();
           setCurrPlayer(playerData);
