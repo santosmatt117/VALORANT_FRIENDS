@@ -49,6 +49,7 @@ function CreateProfilePage() {
 
       if (response.ok) {
         console.log('Profile created !! WOO', newPlayer);
+        alert("Profile created!");
         // reset fields
         setState({
           playerIdentifier: '',
@@ -60,7 +61,7 @@ function CreateProfilePage() {
         });
         // go to user page
         const userId = response.text; // Replace with actual location of userID
-        navigate('/user-account/${userId}');
+        navigate('/login');
       } else {
         console.error('Failed to create profile:', response.statusText);
       }

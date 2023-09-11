@@ -47,11 +47,14 @@ public class PlayerController {
     }
 
 
-    @GetMapping("/login")
-    public ResponseEntity<Player> authenticateUser(@RequestParam("username") String username, @RequestParam("password") String password) {
+    @PostMapping("/login")
+    public ResponseEntity<Player> authenticateUser(@RequestBody LoginRequest loginRequest) {
+        String username = loginRequest.getUsername();
+        String password = loginRequest.getPassword();
+    
         Optional<Player> foundPlayer = this.playerRepository.findByPlayerIdentifier(username);
         if (foundPlayer.isEmpty()) {
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);  // Username not found, status 200
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);  // Username not found, status 404
         } 
         Player player = foundPlayer.get();
         if (!player.getPassword().equals(password)) {
@@ -59,6 +62,9 @@ public class PlayerController {
         }
         return new ResponseEntity<>(player, HttpStatus.OK);  // Successful login, status 200
     }
+    
+
+    // make separate function for findByPlayerIdentifier
 
     @GetMapping("/")
     public Iterable<Player> getAllPlayers() {
@@ -231,4 +237,26 @@ public class PlayerController {
         Player updatedPlayer = this.playerRepository.save(playerToUpdate);
         return updatedPlayer;
     }
+
+    public static class LoginRequest {
+        private String username;
+        private String password;
+
+        public LoginRequest() {}
+
+        public LoginRequest(String username, String password) {
+            this.username = username;
+            this.password = password;
+        }
+
+        public String getUsername() { 
+            return this.username; 
+        }
+
+        public String getPassword() { 
+            return this.password; 
+        }
+
+    }
+
 }
