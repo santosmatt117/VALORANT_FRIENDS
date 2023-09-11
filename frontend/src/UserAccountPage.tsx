@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Rank, Gamemode, Role, Agent } from './enums';
 import { agentUUIDs, rankLargeIconLinks, gameModeUUIDs, roleDisplayIcons } from './agentUUIDs';
+import SearchPlayersPage from './SearchPlayersPage';
 
 import './UserAccountPage.css'; // Import your CSS file
+import { Link } from 'react-router-dom';
 
 interface Player {
   id: number;
@@ -54,16 +56,16 @@ const UserAccountPage: React.FC = () => {
               <strong>Player Identifier:</strong> {currPlayer.playerIdentifier}
             </li> */}
             <li className="profile-info">
-              <strong>Rank:</strong> {currPlayer.rank}
+              <strong>Favorite Agent:</strong> {currPlayer.agent}
             </li>
             <li className="profile-info">
-              <strong>Preferred Gamemode:</strong> {currPlayer.gamemode}
+              <strong>Rank:</strong> {currPlayer.rank}
             </li>
             <li className="profile-info">
               <strong>Role:</strong> {currPlayer.role}
             </li>
             <li className="profile-info">
-              <strong>Favorite Agent:</strong> {currPlayer.agent}
+              <strong>Preferred Gamemode:</strong> {currPlayer.gamemode}
             </li>
           </ul>
           <div className="image-box">
@@ -87,6 +89,14 @@ const UserAccountPage: React.FC = () => {
               className="profile-image"
               alt={currPlayer.gamemode}
             />
+          </div>
+          <div className="button-container">
+            <div className="want-people-text">
+              <h3>Want new people to play with?</h3>
+            </div>
+            <button className="search-players-button" onClick={() => window.location.href = '/search-players'}>
+              Search for players now!
+            </button>
           </div>
         </div>
       ) : (

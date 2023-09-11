@@ -39,23 +39,49 @@ strong {
   align-items: center;
   justify-content: space-between;
   margin-top: 20px;
-  background-color: #787b78; /* Dark background color for the image box */
+  background-color: #36618fc1; /* Dark background color for the image box */
   padding: 10px;
   border-radius: 5px; /* Add rounded borders */
 }
-
-/*
-.image-box img {
-  margin: 0 5px; // Add some spacing between images 
-  border-radius: 5px; // Add rounded corners to the images 
-  box-shadow: inset 0 0 0 5px rgba(0, 0, 0, 0.3); // Add an inner shadow effect 
-  background-color: transparent; // Ensure the image background is transparent 
-}
-*/
-
 
 
 .profile-image {
   width: 50px; /* Adjust the size as needed */
   height: 50px; /* Adjust the size as needed */
 }
+
+
+/* UserAccountPage.css */
+/* Add these styles for the button container */
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+}
+
+/* Add this to your CSS file */
+
+/* Style for the text on the left */
+.want-people-text {
+  float: left; /* Float the text to the left */
+  margin-right: 10px; /* Add some margin to separate text and button */
+}
+
+/* Style for the button on the right */
+.search-players-button {
+  float: right; /* Float the button to the left */
+  clear: right; /* Clear the float so that it doesn't overlap with the text */
+  background-color: #007bff; /* Example background color (you can change this) */
+  color: white; /* Text color */
+  padding: 10px 20px; /* Padding for the button */
+  border: none; /* Remove button border */
+  border-radius: 5px; /* Add some border radius for rounded corners */
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+/* Add hover effect for the button */
+.search-players-button:hover {
+  background-color: #0056b3; /* Example background color on hover (you can change this) */
+}
+
+
