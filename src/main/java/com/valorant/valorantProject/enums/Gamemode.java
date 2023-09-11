@@ -5,7 +5,6 @@ public enum Gamemode {
     SPIKERUSH,
     DEATHMATCH,
     COMPETITIVE,
-    CUSTOM,
     ESCALATION,
     TEAMDEATHMATCH,
 }

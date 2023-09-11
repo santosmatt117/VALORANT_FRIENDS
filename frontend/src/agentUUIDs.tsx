@@ -1,0 +1,73 @@
+export const agentUUIDs: Record<string, string> = {
+    GEKKO: "e370fa57-4757-3604-3648-499e1f642d3f",
+    FADE: "dade69b4-4f5a-8528-247b-219e5a1facd6",
+    BREACH: "5f8d3a7f-467b-97f3-062c-13acf203c006",
+    DEADLOCK: "cc8b64c8-4b25-4ff9-6e7f-37b4da43d235",
+    RAZE: "f94c3b30-42be-e959-889c-5aa313dba261",
+    CHAMBER: "22697a3d-45bf-8dd7-4fec-84a9e28c69d7",
+    KAYO: "601dbbe7-43ce-be57-2a40-4abd24953621",
+    SKYE: "6f2a04ca-43e0-be17-7f36-b3908627744d",
+    CYPHER: "117ed9e3-49f3-6512-3ccf-0cada7e3823b",
+    SOVA: "320b2a48-4d9b-a075-30f1-1f93a9b638fa",
+    KILLJOY: "1e58de9c-4950-5125-93e9-a0aee9f98746",
+    HARBOR: "95b78ed7-4637-86d9-7e41-71ba8c293152",
+    VIPER: "707eab51-4836-f488-046a-cda6bf494859",
+    PHOENIX: "eb93336a-449b-9c1b-0a54-a891f7921d69",
+    ASTRA: "41fb69c1-4189-7b37-f117-bcaf1e96f1bf",
+    BRIMSTONE: "9f0d8ba9-4140-b941-57d3-a7ad57c6b417",
+    NEON: "bb2a4828-46eb-8cd1-e765-15848195d751",
+    YORU: "7f94d92c-4234-0a36-9646-3a87eb8b5c89",
+    SAGE: "569fdd95-4d10-43ab-ca70-79becc718b46",
+    REYNA: "a3bfb853-43b2-7238-a4f1-ad90e9e46bcc",
+    OMEN: "8e253930-4c05-31dd-1b6c-968525494517",
+    JETT: "add6443a-41bd-e414-f6ad-e58d267f4e95",
+};
+
+
+// competitive and unrated are the same icon lol comp doesn't have an icon on the val api :(
+export const gameModeUUIDs: Record<string, string> = {
+  "COMPETITIVE": "96bd3920-4f36-d026-2b28-c683eb0bcac5",
+  "UNRATED": "96bd3920-4f36-d026-2b28-c683eb0bcac5",
+  "DEATHMATCH": "a8790ec5-4237-f2f0-e93b-08a8e89865b2",
+  "ESCALATION": "a4ed6518-4741-6dcb-35bd-f884aecdc859",
+  "TEAMDEATHMATCH": "e086db66-47fd-e791-ca81-06a645ac7661",
+  "SPIKERUSH": "e921d1e6-416b-c31f-1291-74930c330b7b",
+  "REPLICATION": "4744698a-4513-dc96-9c22-a9aa437e4a58",
+  "SWIFTPLAY": "5d0f264b-4ebe-cc63-c147-809e1374484b",
+};
+
+export const roleDisplayIcons: Record<string, string> = {
+  "INITIATOR": "https://media.valorant-api.com/agents/roles/1b47567f-8f7b-444b-aae3-b0c634622d10/displayicon.png",
+  "DUELIST": "https://media.valorant-api.com/agents/roles/dbe8757e-9e92-4ed4-b39f-9dfc589691d4/displayicon.png",
+  "CONTROLLER": "https://media.valorant-api.com/agents/roles/4ee40330-ecdd-4f2f-98a8-eb1243428373/displayicon.png",
+  "SENTINEL": "https://media.valorant-api.com/agents/roles/5fc02f99-4091-4486-a531-98459a3e95e9/displayicon.png",
+};
+
+export const rankLargeIconLinks: Record<string, string> = {
+  "UNRANKED": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/0/largeicon.png",
+  "IRON1": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/3/largeicon.png",
+  "IRON2": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/4/largeicon.png",
+  "IRON3": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/5/largeicon.png",
+  "BRONZE1": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/6/largeicon.png",
+  "BRONZE2": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/7/largeicon.png",
+  "BRONZE3": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/8/largeicon.png",
+  "SILVER1": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/9/largeicon.png",
+  "SILVER2": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/10/largeicon.png",
+  "SILVER3": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/11/largeicon.png",
+  "GOLD1": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/12/largeicon.png",
+  "GOLD2": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/13/largeicon.png",
+  "GOLD3": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/14/largeicon.png",
+  "PLATINUM1": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/15/largeicon.png",
+  "PLATINUM2": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/16/largeicon.png",
+  "PLATINUM3": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/17/largeicon.png",
+  "DIAMOND1": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/18/largeicon.png",
+  "DIAMOND2": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/19/largeicon.png",
+  "DIAMOND3": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/20/largeicon.png",
+  "ASCENDANT1": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/21/largeicon.png",
+  "ASCENDANT2": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/22/largeicon.png",
+  "ASCENDANT3": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/23/largeicon.png",
+  "IMMORTAL1": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/24/largeicon.png",
+  "IMMORTAL2": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/25/largeicon.png",
+  "IMMORTAL3": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/26/largeicon.png",
+  "RADIANT": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/27/largeicon.png", 
+};

@@ -1,7 +1,9 @@
-
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Rank, Gamemode, Role, Agent } from './enums';  // Adjust the path accordingly
+import { Rank, Gamemode, Role, Agent } from './enums';
+import { agentUUIDs, rankLargeIconLinks, gameModeUUIDs, roleDisplayIcons } from './agentUUIDs';
+
+import './UserAccountPage.css'; // Import your CSS file
 
 interface Player {
   id: number;
@@ -15,6 +17,8 @@ interface Player {
 const UserAccountPage: React.FC = () => {
   const { userId } = useParams();
   const [currPlayer, setCurrPlayer] = useState<Player | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchPlayerData = async () => {
@@ -24,10 +28,12 @@ const UserAccountPage: React.FC = () => {
           const playerData: Player = await response.json();
           setCurrPlayer(playerData);
         } else {
-          console.error('Failed to fetch player data');
+          setError('Failed to fetch player data');
         }
       } catch (error) {
-        console.error('Error:', error);
+        setError('Error fetching player data');
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -36,24 +42,55 @@ const UserAccountPage: React.FC = () => {
 
   return (
     <div className="user-account-container">
-      <h2>Player Profile</h2>
-      {currPlayer ? (
+      <h2>{currPlayer?.playerIdentifier}</h2>
+      {loading ? (
+        <p>Loading player data...</p>
+      ) : error ? (
+        <p className="error-message">Error: {error}</p>
+      ) : currPlayer ? (
         <div>
-          <p>Player Identifier: {currPlayer.playerIdentifier}</p>
-          <p>Rank: {currPlayer.rank}</p>
-          <p>Preferred Gamemode: {currPlayer.gamemode}</p>
-          <p>Role: {currPlayer.role}</p>
-          <p>
-            Favorite Agent: {currPlayer.agent}
+          <ul>
+            {/* <li className="profile-info">
+              <strong>Player Identifier:</strong> {currPlayer.playerIdentifier}
+            </li> */}
+            <li className="profile-info">
+              <strong>Rank:</strong> {currPlayer.rank}
+            </li>
+            <li className="profile-info">
+              <strong>Preferred Gamemode:</strong> {currPlayer.gamemode}
+            </li>
+            <li className="profile-info">
+              <strong>Role:</strong> {currPlayer.role}
+            </li>
+            <li className="profile-info">
+              <strong>Favorite Agent:</strong> {currPlayer.agent}
+            </li>
+          </ul>
+          <div className="image-box">
             <img
-              src={`https://media.valorant-api.com/agents/e370fa57-4757-3604-3648-499e1f642d3f/displayiconsmall.png`}
+              src={`https://media.valorant-api.com/agents/${agentUUIDs[currPlayer.agent]}/displayicon.png`}
               alt={currPlayer.agent}
+              className="profile-image"
             />
-          </p>
-          {/* Render other currPlayer properties as needed */}
+            <img
+              src={rankLargeIconLinks[currPlayer.rank]}
+              alt={currPlayer.agent}
+              className="profile-image"
+            />
+            <img
+              src={roleDisplayIcons[currPlayer.role]}
+              alt={currPlayer.role}
+              className="profile-image"
+            />
+            <img
+              src={`https://media.valorant-api.com/gamemodes/${gameModeUUIDs[currPlayer.gamemode]}/displayicon.png`}
+              className="profile-image"
+              alt={currPlayer.gamemode}
+            />
+          </div>
         </div>
       ) : (
-        <p>Loading player data...</p>
+        <p>No player data available.</p>
       )}
     </div>
   );
