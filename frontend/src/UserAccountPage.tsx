@@ -1,48 +1,3 @@
-// import React, { useEffect, useState } from 'react';
-// import { useParams } from 'react-router-dom';
-
-// const UserAccountPage: React.FC = () => {
-//   const { userId } = useParams();
-//   const [userAccount, setUserAccount] = useState(null);
-
-//   useEffect(() => {
-//     // Fetch user account information based on userId
-//     // Replace this with your actual API call to fetch user data
-//     const fetchUserAccount = async () => {
-//       try {
-//         const response = await fetch(`http://localhost:8080/api/v1/users/${userId}`);
-//         if (response.ok) {
-//           const userData = await response.json();
-//           setUserAccount(userData);
-//         } else {
-//           console.error('Failed to fetch user account data');
-//         }
-//       } catch (error) {
-//         console.error('Error:', error);
-//       }
-//     };
-
-//     fetchUserAccount();
-//   }, [userId]);
-
-//   return (
-//     <div className="user-account-container">
-//       <h2>User Account</h2>
-//       {userAccount ? (
-//         <div>
-//           <p>Username: {userAccount.playerIdentifier}</p>
-
-//           {/* Display user account information here */}
-//           {/* You can access userAccount properties like userAccount.name, userAccount.email, etc. */}
-//         </div>
-//       ) : (
-//         <p>Loading user account data...</p>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default UserAccountPage;
 
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
@@ -64,7 +19,7 @@ const UserAccountPage: React.FC = () => {
   useEffect(() => {
     const fetchPlayerData = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/api/v1/users/${userId}`);
+        const response = await fetch(`http://localhost:8080/api/v1/players/search/${userId}`);
         if (response.ok) {
           const playerData: Player = await response.json();
           setCurrPlayer(playerData);
@@ -88,7 +43,13 @@ const UserAccountPage: React.FC = () => {
           <p>Rank: {currPlayer.rank}</p>
           <p>Preferred Gamemode: {currPlayer.gamemode}</p>
           <p>Role: {currPlayer.role}</p>
-          <p>Favorite Agent: {currPlayer.agent}</p>
+          <p>
+            Favorite Agent: {currPlayer.agent}
+            <img
+              src={`https://media.valorant-api.com/agents/e370fa57-4757-3604-3648-499e1f642d3f/displayiconsmall.png`}
+              alt={currPlayer.agent}
+            />
+          </p>
           {/* Render other currPlayer properties as needed */}
         </div>
       ) : (
@@ -99,4 +60,3 @@ const UserAccountPage: React.FC = () => {
 };
 
 export default UserAccountPage;
-

@@ -66,6 +66,7 @@ public class PlayerController {
 
     // make separate function for findByPlayerIdentifier
 
+
     @GetMapping("/")
     public Iterable<Player> getAllPlayers() {
         return this.playerRepository.findAll();

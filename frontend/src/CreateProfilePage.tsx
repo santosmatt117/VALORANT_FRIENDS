@@ -63,6 +63,7 @@ function CreateProfilePage() {
         const userId = response.text; // Replace with actual location of userID
         navigate('/login');
       } else {
+        alert("whoops! Name already exists! :3");
         console.error('Failed to create profile:', response.statusText);
       }
     } catch (error) {

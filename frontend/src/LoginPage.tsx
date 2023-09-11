@@ -29,7 +29,6 @@ const LoginPage: React.FC = () => {
   
       if (response.ok) {
         const user = await response.json();
-        alert("Login successful!");
         navigate(`/user-account/${user.id}`);
       } else if (response.status === 401) {
         alert("SIKE, THAT'S THE WRONG PASSWORD");
