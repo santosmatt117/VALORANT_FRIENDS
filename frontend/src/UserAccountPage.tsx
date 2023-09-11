@@ -94,7 +94,7 @@ const UserAccountPage: React.FC = () => {
             <div className="want-people-text">
               <h3>Want new people to play with?</h3>
             </div>
-            <button className="search-players-button" onClick={() => window.location.href = '/search-players'}>
+            <button className="search-players-button" onClick={() => window.location.href = '/SearchPlayers'}>
               Search for players now!
             </button>
           </div>

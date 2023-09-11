@@ -52,3 +52,49 @@
 .custom-select select:hover {
   border-color: #007bff; /* Highlight on hover */
 }
+
+.profile-info {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.image-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #36618fc1; /* Dark background color for the image box */
+  padding: 10px;
+  border-radius: 5px; /* Add rounded borders */
+}
+
+/* Add this CSS to your stylesheet */
+.search-result {
+  border-bottom: 1px solid rgb(42, 41, 41); /* Add a black horizontal line below each search result */
+  margin-bottom: 20px; /* Add some spacing between search results */
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.info-chunk {
+  flex: 1;
+  margin-right: 20px; /* Add spacing between info chunks */
+}
+
+.image-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.profile-image {
+  max-width: 50px; /* Adjust the image size as needed */
+  margin-right: 10px; /* Add spacing between images */
+}
+

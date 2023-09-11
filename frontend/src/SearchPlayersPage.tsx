@@ -1,6 +1,8 @@
 import React, { Component, ChangeEvent } from "react";
 import './SearchPlayersPage.css';
 import { Agent, Rank, Role, Gamemode } from './enums';
+import { agentUUIDs, rankLargeIconLinks, gameModeUUIDs, roleDisplayIcons } from './agentUUIDs';
+
 
 type Page = "Filters" | "Results";
 
@@ -176,22 +178,57 @@ export class SearchPlayersPage extends Component<{}, SearchPlayersPageState> {
     } else {
       return (
         <div className="search-players-container">
-        <h2>Search Results</h2>
-        <ul>
-          {searchResults.length > 0 ? searchResults.map((result, index) => 
-            <li key={index}>
-              {/* Render your Player object */}
-              Player Identifier: {result.playerIdentifier},
-              Rank: {result.rank},
-              Gamemode: {result.gamemode},
-              Role: {result.role},
-              Agent: {result.agent}
-            </li>
-          ) : <li>No results found</li>}
-        </ul>
-        {/* Back button to return to Search! */}
-        <button onClick={this.handleBack}>Back to Search</button>
-      </div>
+          <h2>Search Results</h2>
+          <ul>
+            {searchResults.length > 0 ? searchResults.map((result, index) => (
+              <li key={index} className="search-result">
+                {/* Render your Player object */}
+                <strong><h3>{result.playerIdentifier}</h3></strong>
+                <div className="profile-info">
+                  <div className="info-chunk">
+                    <strong>Agent:</strong> {result.agent}
+                  </div>
+                  <div className="info-chunk">
+                    <strong>Rank:</strong> {result.rank}
+                  </div>
+                  <div className="info-chunk">
+                    <strong>Role:</strong> {result.role}
+                  </div>
+                  <div className="info-chunk">
+                    <strong>Preferred Gamemode:</strong> {result.gamemode}
+                  </div>
+                </div>
+                {/* do the same for the image box */}
+                <div className="image-box">
+                  <img
+                    src={`https://media.valorant-api.com/agents/${agentUUIDs[result.agent]}/displayicon.png`}
+                    alt={result.agent}
+                    className="profile-image"
+                  />
+                  <img
+                    src={rankLargeIconLinks[result.rank]}
+                    alt={result.agent}
+                    className="profile-image"
+                  />
+                  <img
+                    src={roleDisplayIcons[result.role]}
+                    alt={result.role}
+                    className="profile-image"
+                  />
+                  <img
+                    src={`https://media.valorant-api.com/gamemodes/${gameModeUUIDs[result.gamemode]}/displayicon.png`}
+                    className="profile-image"
+                    alt={result.gamemode}
+                  />
+                </div>
+              </li>
+            )) : (
+              <li>No results found</li>
+            )}
+          </ul>
+          {/* Back button to return to Search! */}
+          <button onClick={this.handleBack}>Back to Search</button>
+        </div>
       );
     }
   };
