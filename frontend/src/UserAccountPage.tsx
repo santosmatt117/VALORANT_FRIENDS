@@ -76,7 +76,7 @@ const UserAccountPage: React.FC = () => {
             />
             <img
               src={rankLargeIconLinks[currPlayer.rank]}
-              alt={currPlayer.agent}
+              alt={currPlayer.rank}
               className="profile-image"
             />
             <img
