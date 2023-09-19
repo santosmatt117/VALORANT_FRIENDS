@@ -24,8 +24,8 @@ export enum Agent {
     VIPER = 'VIPER',
     YORU = 'YORU',
 }
-  
-export enum Rank {
+
+export enum PlayerRank {
     IRON1 = 'IRON1',
     IRON2 = 'IRON2',
     IRON3 = 'IRON3',

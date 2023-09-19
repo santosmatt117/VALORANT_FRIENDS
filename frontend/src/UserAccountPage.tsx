@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Rank, Gamemode, Role, Agent } from './enums';
+import { PlayerRank, Gamemode, Role, Agent } from './enums';
 import { agentUUIDs, rankLargeIconLinks, gameModeUUIDs, roleDisplayIcons } from './agentUUIDs';
 import SearchPlayersPage from './SearchPlayersPage';
 
@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 interface Player {
   id: number;
   playerIdentifier: string;
-  rank: Rank;
+  rank: PlayerRank;
   gamemode: Gamemode;
   role: Role;
   agent: Agent;
@@ -107,3 +107,4 @@ const UserAccountPage: React.FC = () => {
 };
 
 export default UserAccountPage;
+

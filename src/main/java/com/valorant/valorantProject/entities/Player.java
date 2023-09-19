@@ -4,7 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
 import com.valorant.valorantProject.enums.Gamemode;
-import com.valorant.valorantProject.enums.Rank;
+import com.valorant.valorantProject.enums.PlayerRank;
 import com.valorant.valorantProject.enums.Role;
 import com.valorant.valorantProject.enums.Agent;
 
@@ -31,8 +31,8 @@ public class Player {
     private String password;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "RANK")
-    private Rank rank;
+    @Column(name = "PLAYER_RANK")
+    private PlayerRank playerRank;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "GAMEMODE")
@@ -70,12 +70,12 @@ public class Player {
         this.password = password;
     }
 
-    public Rank getRank() {
-        return rank;
+    public PlayerRank getRank() {
+        return playerRank;
     }
 
-    public void setRank(Rank rank) {
-        this.rank = rank;
+    public void setRank(PlayerRank newRank) {
+        this.playerRank = newRank;
     }
 
     public Gamemode getGamemode() {

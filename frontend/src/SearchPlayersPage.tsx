@@ -1,6 +1,6 @@
 import React, { Component, ChangeEvent } from "react";
 import './SearchPlayersPage.css';
-import { Agent, Rank, Role, Gamemode } from './enums';
+import { Agent, PlayerRank, Role, Gamemode } from './enums';
 import { agentUUIDs, rankLargeIconLinks, gameModeUUIDs, roleDisplayIcons } from './agentUUIDs';
 
 
@@ -8,7 +8,7 @@ type Page = "Filters" | "Results";
 
 interface SearchPlayersPageState {
   filters: {
-    rankFilter: Rank | '';
+    rankFilter: PlayerRank | '';
     roleFilter: Role | '';
     agentFilter: Agent | '';
     gamemodeFilter: Gamemode | '';
@@ -17,10 +17,6 @@ interface SearchPlayersPageState {
   page: Page;
 }
 
-// const ranks = Object.values(Rank);
-// const roles = Object.values(Role);
-// const agents = Object.values(Agent);
-// const gamemodes = Object.values(Gamemode);
 
 export class SearchPlayersPage extends Component<{}, SearchPlayersPageState> {
 
@@ -42,7 +38,7 @@ export class SearchPlayersPage extends Component<{}, SearchPlayersPageState> {
   handleFilterChange = (event: ChangeEvent<HTMLSelectElement>): void => {
     const { name, value } = event.target;
 
-    let validatedValue: string | Agent | Role | Rank | Gamemode = value;
+    let validatedValue: string | Agent | Role | PlayerRank | Gamemode = value;
   
     if (name === "agentFilter") {
       if (Object.values(Agent).includes(value as Agent)) {
@@ -55,8 +51,8 @@ export class SearchPlayersPage extends Component<{}, SearchPlayersPageState> {
       }
     }
     if (name === "rankFilter") {
-      if (Object.values(Rank).includes(value as Rank)) {
-        validatedValue = value as Rank;
+      if (Object.values(PlayerRank).includes(value as PlayerRank)) {
+        validatedValue = value as PlayerRank;
       }
     }
     if (name === "gamemodeFilter") {

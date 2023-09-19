@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import './CreateProfilePage.css'; // Import the existing CSS file
-import { Agent, Rank, Role, Gamemode } from './enums';
+import { Agent, PlayerRank, Role, Gamemode } from './enums';
 import { useNavigate } from 'react-router-dom';
 
 function CreateProfilePage() {
@@ -10,7 +10,7 @@ function CreateProfilePage() {
     agent: Agent.ASTRA,
     role: Role.DUELIST,
     gamemode: Gamemode.COMPETITIVE,
-    rank: Rank.RADIANT,
+    rank: PlayerRank.RADIANT,
   });
 
   const navigate = useNavigate();
@@ -57,7 +57,7 @@ function CreateProfilePage() {
           agent: Agent.ASTRA,
           role: Role.DUELIST,
           gamemode: Gamemode.COMPETITIVE,
-          rank: Rank.RADIANT,
+          rank: PlayerRank.RADIANT,
         });
         // go to user page
         const userId = response.text; // Replace with actual location of userID
@@ -140,8 +140,8 @@ function CreateProfilePage() {
         <div className="select-container">
           <label className="select-label">Rank:</label>
           <div className="custom-select">
-            <select name="rank" value={state.rank} onChange={handleInputChange}>
-              {Object.values(Rank).map((rankOption) => (
+            <select name="P_rank" value={state.rank} onChange={handleInputChange}>
+              {Object.values(PlayerRank).map((rankOption) => (
                 <option key={rankOption} value={rankOption}>
                   {rankOption}
                 </option>

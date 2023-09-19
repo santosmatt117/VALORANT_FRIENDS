@@ -10,7 +10,7 @@ import java.util.Optional;
 import com.valorant.valorantProject.entities.Player;
 import com.valorant.valorantProject.enums.Agent;
 import com.valorant.valorantProject.enums.Gamemode;
-import com.valorant.valorantProject.enums.Rank;
+import com.valorant.valorantProject.enums.PlayerRank;
 import com.valorant.valorantProject.enums.Role;
 import com.valorant.valorantProject.repositories.PlayerRepository;
 
@@ -80,21 +80,21 @@ public class PlayerController {
     
     @GetMapping("/search")
     public List<Player> searchPlayers(@RequestParam(name="agent", required=false) Agent agent,
-                                      @RequestParam(name="rank", required=false) Rank rank,
+                                      @RequestParam(name="rank", required=false) PlayerRank playerRank,
                                       @RequestParam(name="gamemode", required=false) Gamemode gamemode, 
                                       @RequestParam(name="role", required=false) Role role) {
         if (agent != null) {
-            if (rank != null) {
+            if (playerRank != null) {
                 if (gamemode != null) {
                     if (role != null) {
-                        return this.playerRepository.findByAgentAndRankAndGamemodeAndRole(agent, rank, gamemode, role);
+                        return this.playerRepository.findByAgentAndPlayerRankAndGamemodeAndRole(agent, playerRank, gamemode, role);
                     } else {
-                        return this.playerRepository.findByAgentAndRankAndGamemode(agent, rank, gamemode);
+                        return this.playerRepository.findByAgentAndPlayerRankAndGamemode(agent, playerRank, gamemode);
                     }
                 } else if (role != null) {
-                    return this.playerRepository.findByAgentAndRankAndRole(agent, rank, role);
+                    return this.playerRepository.findByAgentAndPlayerRankAndRole(agent, playerRank, role);
                 } else {
-                    return this.playerRepository.findByAgentAndRank(agent, rank);
+                    return this.playerRepository.findByAgentAndPlayerRank(agent, playerRank);
                 }
             } else if (gamemode != null) {
                 if (role != null) {
@@ -107,17 +107,17 @@ public class PlayerController {
             } else {
                 return this.playerRepository.findByAgent(agent);
             }
-        } else if (rank != null) {
+        } else if (playerRank != null) {
             if (gamemode != null) {
                 if (role != null) {
-                    return this.playerRepository.findByRankAndGamemodeAndRole(rank, gamemode, role);
+                    return this.playerRepository.findByPlayerRankAndGamemodeAndRole(playerRank, gamemode, role);
                 } else {
-                    return this.playerRepository.findByRankAndGamemode(rank, gamemode);
+                    return this.playerRepository.findByPlayerRankAndGamemode(playerRank, gamemode);
                 }
             } else if (role != null) {
-                return this.playerRepository.findByRankAndRole(rank, role);
+                return this.playerRepository.findByPlayerRankAndRole(playerRank, role);
             } else {
-                return this.playerRepository.findByRank(rank);
+                return this.playerRepository.findByPlayerRank(playerRank);
             }
         } else if (gamemode != null) {
             if (role != null) {
@@ -153,7 +153,7 @@ public class PlayerController {
     }
 
     @PutMapping("/{id}/changerank")
-    public Player updateRank(@PathVariable("id") Integer id, @RequestParam("rank") Rank newRank) {
+    public Player updateRank(@PathVariable("id") Integer id, @RequestParam("rank") PlayerRank newRank) {
         Optional<Player> playerToUpdateOptional = this.playerRepository.findById(id);
         if (!playerToUpdateOptional.isPresent()) {
             return null;

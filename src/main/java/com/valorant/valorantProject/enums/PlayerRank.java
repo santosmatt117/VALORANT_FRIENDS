@@ -1,6 +1,6 @@
 package com.valorant.valorantProject.enums;
 
-public enum Rank {
+public enum PlayerRank {
     IRON1,
     IRON2,
     IRON3,
