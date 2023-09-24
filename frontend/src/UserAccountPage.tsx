@@ -44,7 +44,7 @@ const UserAccountPage: React.FC = () => {
 
   return (
     <div className="user-account-container">
-      <h2>{currPlayer?.playerIdentifier}</h2>
+      <h2>{currPlayer?.playerIdentifier}</h2> <button>Edit Profile</button>
       {loading ? (
         <p>Loading player data...</p>
       ) : error ? (

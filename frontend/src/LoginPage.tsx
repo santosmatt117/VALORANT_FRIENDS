@@ -52,7 +52,7 @@ const LoginPage: React.FC = () => {
 
   return (
     <div className="login-container">
-      <h2>Login</h2>
+      <h2>Login To Find New Teammates!</h2>
       <form onSubmit={handleLoginSubmit}>
         <label>
           Username:

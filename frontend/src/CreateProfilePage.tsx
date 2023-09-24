@@ -140,7 +140,7 @@ function CreateProfilePage() {
         <div className="select-container">
           <label className="select-label">Rank:</label>
           <div className="custom-select">
-            <select name="P_rank" value={state.rank} onChange={handleInputChange}>
+            <select name="rank" value={state.rank} onChange={handleInputChange}>
               {Object.values(PlayerRank).map((rankOption) => (
                 <option key={rankOption} value={rankOption}>
                   {rankOption}

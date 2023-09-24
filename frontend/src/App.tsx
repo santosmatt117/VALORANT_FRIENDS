@@ -30,8 +30,8 @@ class App extends Component<{}, AppState> {
 
     if (page === 'CreateProfile') {
       return <CreateProfilePage />;
-    } else if (page === 'SearchPlayers') {
-      return <SearchPlayersPage />;
+    // } else if (page === 'SearchPlayers') {
+    //   return <SearchPlayersPage />;
     } else if (page === 'Login') {
       return <LoginPage />; // Render the LoginPage component
     } else if (page === 'UserAccount') {
@@ -46,12 +46,13 @@ class App extends Component<{}, AppState> {
       <Router>
         <div className="App">
           <header className="App-header">
-            <h1>Valorant Friend Finder</h1>
+            <h1>VALSync</h1>
+            <h3> FIND YOUR NEW POCKET SAGE  </h3>
             <div className="options">
               {/* Use Link to navigate */}
               <Link to="/">Login</Link>
               <Link to="/CreateProfile">Create Profile</Link>
-              <Link to="/SearchPlayers">Search for Players</Link>
+              {/* <Link to="/SearchPlayers">Search for Players</Link> */}
             </div>
           </header>
           <div className="page-content">
